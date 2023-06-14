@@ -8,7 +8,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot/pom.xml" />
+        <option value="$PROJECT_DIR$/spring/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/springboot/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
@@ -16,8 +23,8 @@
   </component>
   <component name="com.alibaba.oneapi2.generator">
     <option name="env" value="online" />
-    <option name="appKey" value="" />
-    <option name="appSecret" value="" />
+    <option name="appKey" value="l4y6i3ds" />
+    <option name="appSecret" value="CBSYFJVJLJSWQFHQZKJL1J0LQRVU0QXMO6MPG0R1" />
     <option name="expertConfig" value="" />
     <option name="debug" value="false" />
   </component>
