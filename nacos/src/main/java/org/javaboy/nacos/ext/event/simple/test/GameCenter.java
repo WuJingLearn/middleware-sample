@@ -1,6 +1,7 @@
 package org.javaboy.nacos.ext.event.simple.test;
 
 import org.javaboy.nacos.ext.event.simple.*;
+import org.javaboy.nacos.ext.event.simple.listener.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class GameCenter {
 
 
     public GameCenter(){
-        publisher.addSubscribes(new DataChangeSubscriber());
+        publisher.addSubscriber(new DataChangeSubscriber());
     }
 
 

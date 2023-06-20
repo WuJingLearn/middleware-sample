@@ -2,6 +2,7 @@ package org.javaboy.nacos.ext.event.simple.test;
 
 import org.javaboy.nacos.ext.event.simple.Event;
 import org.javaboy.nacos.ext.event.simple.NotifyCenter;
+import org.javaboy.nacos.ext.event.simple.listener.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
