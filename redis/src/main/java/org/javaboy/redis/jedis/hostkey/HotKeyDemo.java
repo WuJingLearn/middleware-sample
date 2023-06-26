@@ -42,7 +42,7 @@ public class HotKeyDemo {
     }
 
     static String get(String key, int scale, long memberId) {
-        long bucket = (memberId / 1000)%scale;
+        long bucket = (memberId / 101) % scale;
         String realKey = key + "_" + bucket;
         return jedis.get(realKey);
     }

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-
-
     @GetMapping("/see")
     public String see(){
         return "welcome(~)";
     }
+
+
 
 }

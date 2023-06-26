@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class ScheduleThreadPoolDemo {
 
-
     public static void main(String[] args) {
         ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(10);
 
