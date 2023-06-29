@@ -19,6 +19,7 @@
         <module>rpc</module>
         <module>nacos</module>
         <module>design-pattern</module>
+        <module>springboot-starger</module>
     </modules>
 
     <properties>

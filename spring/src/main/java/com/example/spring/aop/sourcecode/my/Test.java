@@ -20,8 +20,6 @@ public class Test {
      * @param args
      * @throws NoSuchMethodException
      */
-    public static void main(String[] args) throws NoSuchMethodException {
-        MethodBeforeAdvice before = new MethodBeforeAdvice(new Aspect(), Aspect.class.getMethod("before"));
-        before.before();
+    public static void main(String[] args) throws NoSuchMethodException {;
     }
 }
