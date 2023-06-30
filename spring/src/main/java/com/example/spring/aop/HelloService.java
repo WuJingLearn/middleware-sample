@@ -6,4 +6,5 @@ package com.example.spring.aop;
  * @desc
  */
 public class HelloService {
+
 }

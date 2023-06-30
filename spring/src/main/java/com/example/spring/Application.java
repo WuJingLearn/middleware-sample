@@ -42,8 +42,7 @@ public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 
-        ApplicationContext parent = context.getParent();
-        System.out.println("爸爸容器:" + parent);
+
 
 
     }

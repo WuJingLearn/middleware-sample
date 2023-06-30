@@ -19,4 +19,8 @@ public class Config1 {
     public void init(){
         System.out.println("Config1 init");
     }
+
+    public static void main(String[] args){
+        System.out.println("他吗的");
+    }
 }

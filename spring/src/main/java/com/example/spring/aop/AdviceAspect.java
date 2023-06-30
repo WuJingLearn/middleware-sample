@@ -58,7 +58,7 @@ public class AdviceAspect {
     }
 
 
-//
+    //
 //    @Before(value = "pointCut2()")
 //    public void before() {
 //        System.out.println("支付订单前置通知");
@@ -68,5 +68,8 @@ public class AdviceAspect {
 //    public void before2() {
 //        System.out.println("HelloService前置通知");
 //    }
+    public static void main(String[] args) {
+        System.out.println("start");
+    }
 
 }
