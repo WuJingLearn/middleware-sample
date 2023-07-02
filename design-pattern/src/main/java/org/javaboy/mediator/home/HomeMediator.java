@@ -1,4 +1,4 @@
-package org.javaboy.mediator;
+package org.javaboy.mediator.home;
 
 import java.util.*;
 
