@@ -12,7 +12,7 @@ import java.util.List;
 public class TestCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-        System.out.println("触发时机");
+//        System.out.println("触发时机");
         return true;
     }
 
