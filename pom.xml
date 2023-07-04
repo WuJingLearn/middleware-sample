@@ -20,6 +20,7 @@
         <module>nacos</module>
         <module>design-pattern</module>
         <module>springboot-starger</module>
+        <module>io</module>
     </modules>
 
     <properties>
