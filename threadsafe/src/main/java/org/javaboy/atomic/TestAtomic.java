@@ -15,9 +15,6 @@ public class TestAtomic {
 
         testAtomic();
 
-        //216
-//        testSyn();;
-
 
     }
 

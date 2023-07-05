@@ -1,5 +1,6 @@
 package org.javaboy.threadpool;
 
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -20,5 +21,13 @@ public class Demo1 {
         Future<String> submit = executor.submit(() -> {
             return "zs";
         });
+
+
+        final char[] a = new char[]{'a', 'b'};
+
+//        a = new char[]{'1', '2'};
+        a[1] = '2';
+        System.out.println(a);
+
     }
 }
