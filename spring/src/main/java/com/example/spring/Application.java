@@ -50,11 +50,12 @@ public class Application {
     @Autowired
     HelloAsync async;
 
-    void testAsync(){
-        async.test();;
+    void testAsync() {
+        async.test();
+        ;
     }
 
-    void aopTest(){
+    void aopTest() {
         orderService.create();
         System.out.println("-------------分------------");
         orderService.payed();
@@ -62,23 +63,23 @@ public class Application {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-
         context.publishEvent(new CustomEvent(context));
 
-
-    /*    SimpleApplicationEventMulticaster multicaster = new SimpleApplicationEventMulticaster();
-        multicaster.setBeanFactory(context.getBeanFactory());
-        multicaster.multicastEvent(new CustomEvent(context));*/
+        System.out.println("-----devtools---");
+        // RestartClassLoader
+        System.out.println(Thread.currentThread().getContextClassLoader());
+        System.out.println(context.getClassLoader());
+        System.out.println(Object.class.getClassLoader());
 
     }
 
-  /*  @Bean
-    public SimpleApplicationEventMulticaster applicationEventMulticaster() {
-        SimpleApplicationEventMulticaster simpleApplicationEventMulticaster = new SimpleApplicationEventMulticaster();
-        BlockingQueue<Runnable> blockingQueue = new LinkedBlockingDeque<>(1000);
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 5, 10, TimeUnit.SECONDS, blockingQueue);
-        simpleApplicationEventMulticaster.setTaskExecutor(threadPoolExecutor);
-        return simpleApplicationEventMulticaster;
-    }
-*/
+//    @Bean
+//    public SimpleApplicationEventMulticaster applicationEventMulticaster() {
+//        配置异步触发监听器
+//        SimpleApplicationEventMulticaster simpleApplicationEventMulticaster = new SimpleApplicationEventMulticaster();
+//        BlockingQueue<Runnable> blockingQueue = new LinkedBlockingDeque<>(1000);
+//        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 5, 10, TimeUnit.SECONDS, blockingQueue);
+//        simpleApplicationEventMulticaster.setTaskExecutor(threadPoolExecutor);
+//        return simpleApplicationEventMulticaster;
+//    }
 }

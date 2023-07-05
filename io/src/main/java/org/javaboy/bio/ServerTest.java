@@ -2,6 +2,7 @@ package org.javaboy.bio;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executors;
@@ -23,8 +24,13 @@ public class ServerTest {
 
         try {
             ServerSocket serverSocket = new ServerSocket(port);
+            // 绑定之后，客户端就可以建立连接了
+            serverSocket.bind(new InetSocketAddress(8080));
             // 阻塞
             while (true) {
+                /**
+                 * 在bio中，即使这里走不到，但是客户端依然可以建立连接。但是在建立连接后无法及时处理他
+                 */
                 handleSocket(serverSocket.accept());
             }
 

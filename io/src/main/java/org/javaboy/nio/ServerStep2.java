@@ -60,6 +60,8 @@ public class ServerStep2 {
                         ByteBuffer buffer = ByteBuffer.allocate(1024);
                         // 这一步是将内核数据拷贝到用户空间，这个过程依然是一个阻塞的
                         socketChannel.read(buffer);
+
+//                        socketChannel.write( buffer)
                     }
                     iterator.remove();
                 }

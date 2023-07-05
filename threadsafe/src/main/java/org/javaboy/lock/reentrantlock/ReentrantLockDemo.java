@@ -1,4 +1,4 @@
-package org.javaboy.lock;
+package org.javaboy.lock.reentrantlock;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,19 +23,22 @@ public class ReentrantLockDemo {
                 ReentrantLock lock = new ReentrantLock();
                 lockMap.putIfAbsent(lockKey, lock);
                 lock = lockMap.get(lockKey);
-
+                System.out.println("lock 对象:" + lock);
+                boolean get = false;
                 try {
-                    boolean get = lock.tryLock(10, TimeUnit.SECONDS);
+                    get = lock.tryLock(10, TimeUnit.SECONDS);
                     if (get) {
                         System.out.println("获取数据");
                         Thread.sleep(2000);
-                    }else {
+                    } else {
                         System.out.println("获取锁失败");
                     }
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 } finally {
-                    lock.unlock();
+                    if (get) {
+                        lock.unlock();
+                    }
                 }
 
             }).start();
