@@ -43,7 +43,8 @@ public class Application {
 
     @PostConstruct
     public void execute() {
-        testAsync();
+//        testAsync();
+        aopTest();
     }
 
 

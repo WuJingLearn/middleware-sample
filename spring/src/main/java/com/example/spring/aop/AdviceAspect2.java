@@ -3,6 +3,7 @@ package com.example.spring.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,8 +12,13 @@ import org.springframework.stereotype.Component;
  * @desc
  */
 @Aspect
+//越小 优先级越大
+/**
+ *
+ */
+@Order(value = 1)
 @Component
-public class AdviceAspect {
+public class AdviceAspect2 {
 
 
     @Pointcut(value = "execution(public * com.example.spring.aop.OrderService.create(..))")
@@ -25,25 +31,29 @@ public class AdviceAspect {
 //    @Pointcut(value = "execution(public * com.example.spring.aop.HelloService.*(..))")
 //    public void pointCut3(){}
 
-    @Around(value = "pointCut()")
-    public Object around(JoinPoint joinPoint) {
-        ProceedingJoinPoint proceedingJoinPoint = (ProceedingJoinPoint) joinPoint;
-        try {
-            System.out.println("创建环绕通知");
-            Object result = proceedingJoinPoint.proceed();
-            System.out.println("创建环绕通知end");
-            return result;
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    @Around(value = "pointCut()")
+//    public Object around(JoinPoint joinPoint) {
+//        ProceedingJoinPoint proceedingJoinPoint = (ProceedingJoinPoint) joinPoint;
+//        try {
+//            System.out.println("创建环绕通知");
+//            Object result = proceedingJoinPoint.proceed();
+//            return result;
+//        } catch (Throwable e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @Before(value = "pointCut()")
     public void beforeCreate() {
-        System.out.println("创建订单前置通知");
+        System.out.println("aspect 2创建订单前置通知");
     }
 
     @After(value = "pointCut()")
+    public void after() {
+        System.out.println("aspect2 创建订单后置通知");
+    }
+
+ /*   @After(value = "pointCut()")
     public void after() {
         System.out.println("创建订单后置通知");
     }
@@ -57,7 +67,7 @@ public class AdviceAspect {
     public void afterThrowing() {
         System.out.println("异常通知");
     }
-
+*/
 
     //
 //    @Before(value = "pointCut2()")
