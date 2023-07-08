@@ -1,5 +1,6 @@
 package org.javaboy.lock.reentrantlock;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -16,6 +17,12 @@ public class Demo2 {
 
     public static void main(String[] args) {
         ReentrantLock lock = new ReentrantLock(true);
+
+
+        /**
+         * ConditionObject 条件对象也是定义在AQS类中的
+         */
+        Condition condition = lock.newCondition();
 
         try {
             lock.lock();
