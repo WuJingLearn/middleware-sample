@@ -15,7 +15,6 @@ public class Main {
         RedissonClient client = Redisson.create();
         RBucket<String> bucket = client.getBucket("name");
         bucket.set("zs");
-
         System.out.println(bucket.get());
     }
 }
