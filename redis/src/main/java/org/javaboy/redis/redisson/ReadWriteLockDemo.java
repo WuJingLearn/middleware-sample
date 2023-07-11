@@ -6,7 +6,64 @@ import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
 
 public class ReadWriteLockDemo {
-    public static void main(String[] args) {
+
+    static RedissonClient client = Redisson.create();
+    static RReadWriteLock lock = client.getReadWriteLock("readWriteLock1");
+
+
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(()->{
+            try {
+                testRead();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        },"read-1").start();
+        /**
+         * 在Redisson中，写锁无法阻塞后续的读锁。可能会导致写锁饥饿的情况，zookeeper的读写锁可以解决这个情况。
+         * 问题出现于，redis 在上读锁的时候，无法知道是否有写锁已经被阻塞的。在zookeeper上可以看写锁的临时节点是否已经
+         * 创建
+         */
+        Thread.sleep(100);
+        new Thread(()->{
+            try {
+                testWrite();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        },"write-1").start();
+
+        Thread.sleep(2000);
+        new Thread(()->{
+            try {
+                testRead();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        },"read-2").start();
+
+    }
+
+    static void testWrite() throws InterruptedException {
+        RLock rLock = lock.writeLock();
+        rLock.lock();
+        System.out.println(Thread.currentThread()+"执行写");
+        Thread.sleep(5000);
+        System.out.println(Thread.currentThread()+"执行写完成");
+
+        rLock.unlock();
+    }
+
+    static void testRead() throws InterruptedException {
+        RLock rLock = lock.readLock();
+        rLock.lock();;
+        System.out.println(Thread.currentThread()+"执行读");
+        Thread.sleep(5000);
+        System.out.println(Thread.currentThread()+"执行读完成");
+        rLock.unlock();
+    }
+
+    static void demo() {
         RedissonClient client = Redisson.create();
         RReadWriteLock lock = client.getReadWriteLock("readWriteLock1");
 
@@ -72,9 +129,9 @@ public class ReadWriteLockDemo {
          *                 unit.toMillis(leaseTime), getLockName(threadId));
          *
          */
-       /**/
+        /**/
         wLock.tryLock();
-
-
     }
+
+
 }
