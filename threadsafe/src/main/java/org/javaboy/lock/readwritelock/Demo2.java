@@ -48,7 +48,10 @@ public class Demo2 {
     /**
      * 上写锁的过程：
      * 1.state不等于0,w=0,表示当前已经有线程上了读锁。上了读锁，则写锁不可以上
+     * 没上写锁，但是有人上了读锁，此时不可以在上写锁。
      * 2.没线程上读锁，但是其他线程上了写锁。则当前线程写锁也不可以上。
+     *
+     * 3.如果是一个线程，写读写，能上
      * 3。state=0 当前没有线程获取锁，则上写锁
      * <p>
      * protected final boolean tryAcquire(int acquires) {
@@ -204,12 +207,25 @@ public class Demo2 {
 
     }
 
+    /**
+     * 上写锁可以理解为：
+     * 1，之前当前线程有没有上过，上过则重入
+     * 2. 以前没写锁，但是有人上了读锁，则不能上
+     * 3。其他线程上了写锁，则不能上
+     */
+
     static void demo3(){
         ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
         ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLock.readLock();
         writeLock.lock();;
         readLock.lock();;
+        writeLock.lock();;
+        // 逻辑继续执行，即使上了读锁，因为之前上过一次写锁
+        System.out.println("执行逻辑");
 
     }
+
+
+
 
 }
