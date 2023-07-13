@@ -1,12 +1,17 @@
-package org.javaboy.visitor.demo2;
+package org.javaboy.visitor.base;
 
 import org.javaboy.visitor.demo1.File;
-import org.javaboy.visitor.demo1.WordFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 访问者模式定义：
+ * 允许在运行时将一个或多个操作应用于一组对象，将操作与对象结构分离。
+ * 访问者模式核心关注点是分离一组对象结构和对象的操作，对象结构可以各不相同，但必须以某一个或一组操作作为连接的中心点。
+ *
+ *
+ *
  * 我感觉访问者模式有点多余，
  * 访问者的本质是方法的实现逻辑，通过具体的访问者来实现,
  * 即使不使用访问者依然可以完成，下面的实现就是通过策略模式来定义对不同的文件类型的处理。
@@ -23,6 +28,8 @@ import java.util.List;
  *
  * File类中定义具体操作的方法，然后方法中包含Visitor访问者类型来具体操作。
  * 压缩方法，打印方法，传递不同的visitor对象。
+ *
+ *
  */
 public class Main {
 

@@ -1,5 +1,8 @@
 package org.javaboy.visitor.demo1;
 
+/**
+ * 具体的访问者，
+ */
 public class PrintVisitor implements FileVisitor {
     @Override
     public void forText(File file) {
