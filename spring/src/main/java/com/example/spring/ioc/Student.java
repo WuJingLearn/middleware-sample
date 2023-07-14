@@ -1,5 +1,6 @@
 package com.example.spring.ioc;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,5 +9,6 @@ import org.springframework.stereotype.Component;
  * @desc
  */
 @Component
+@Profile({"dev","pre"})
 public class Student {
 }

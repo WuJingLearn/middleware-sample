@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.SimpleApplicationEventMulticaster;
+import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import javax.annotation.PostConstruct;
@@ -72,6 +73,20 @@ public class Application {
         System.out.println(context.getClassLoader());
         System.out.println(Object.class.getClassLoader());
 
+        testEnvironment(context);
+
+    }
+
+    static void testEnvironment(ApplicationContext context) {
+        /**
+         *
+         * ApplicationServletEnvironment
+         */
+        Environment environment = context.getEnvironment();
+        System.out.println("env:"+environment);
+
+        String property = environment.getProperty("spring.profiles.active");
+        System.out.println(property);
     }
 
 //    @Bean
